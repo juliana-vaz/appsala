@@ -1,0 +1,7 @@
+{
+  "name": "sgambientes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

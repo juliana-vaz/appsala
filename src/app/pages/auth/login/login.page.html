@@ -1,0 +1,51 @@
+<ion-content>
+<div class="flex-center">
+
+<form [formGroup]='authForm' (submit)='clicklogin(provider.Email)'> 
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Embarcados</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+  <ng-container *ngIf='!configs.isSignIn '>   
+    <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input type='text' formControlName="name"></ion-input>
+    <ion-note  slot='end' *ngIf="name.dirty && name.hasError('required')">Required</ion-note >
+    <ion-note slot='end' *ngIf="name.dirty && name.hasError('minlength')">Nome inválido</ion-note>
+  </ion-item>
+</ng-container>
+
+
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type='email' formControlName="email"></ion-input>
+        <ion-note  slot='end' *ngIf="email.dirty && email.hasError('required')">Required</ion-note>
+        <ion-note slot='end' *ngIf="email.dirty && email.hasError('email')">E-mail inválido</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type='password' formControlName='password'></ion-input>
+        <ion-note slot='end' *ngIf="password.dirty && password.email.hasError('required')">Required</ion-note>
+        <ion-note slot='end' *ngIf="password.dirty && password.email.hasError('minlength')">Senha inválida</ion-note>
+      </ion-item>
+      <ion-button color="dark" fill="clear" size="full" [routerLink]="['/recuperarsenha']">Esqueci minha senha </ion-button>
+
+      <ion-button expand="block" color="success" (click) = 'provider.Email' [routerLink]="['/listaembarcados']" >Login</ion-button>
+
+      <ion-button  expand="block" fill="clear" (click) = 'changeAuthAction()'>Registrar</ion-button>
+
+      <ion-button (click)="clicklogin(provider.Facebook)" type="submit" color="primary" expand="block">
+        <ion-icon name="logo-facebook"></ion-icon>Login com Facebook
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</form>
+
+</div>
+
+</ion-content>
